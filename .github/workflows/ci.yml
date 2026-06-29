@@ -1,0 +1,14 @@
+on: [push, pull_request]
+jobs:
+  build:
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v3
+      - run: pip install -r requirements.txt
+      - run: flake8 src/
+      - run: pytest tests/ --cov=src
+  build-and-test:
+    - Установка Python 3.10
+    - pip install -r requirements.txt
+    - flake8 src/  # Проверка стиля
+    - pytest tests/ --cov=src  # Тесты + покрытие
